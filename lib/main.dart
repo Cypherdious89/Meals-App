@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+
+import './screens/tabs_screen.dart';
 import './screens/category_meals_screen.dart';
 import './screens/categories_screen.dart';
 import './screens/meal_detail_screen.dart';
+import './screens/filters_screen.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Food App',
       theme: ThemeData(
           primarySwatch: Colors.red,
           accentColor: Colors.amberAccent,
-          errorColor: Colors.red[800],
+          errorColor: Colors.red[600],
           canvasColor: Color.fromRGBO(255, 254, 229, 1),
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
@@ -27,16 +32,17 @@ class MyApp extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
                 headline5: TextStyle(
-                    fontSize: 18,
+                    fontSize: 22,
                     fontFamily: 'Roboto',
-                    color: Colors.white,
+                    color: Colors.black,
                     fontWeight: FontWeight.bold),
               )),
       initialRoute: '/', // default is '/'
       routes: {
-        '/': (ctx) => CategoriesScreen(),
+        '/': (ctx) => TabsScreen(),
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(),
         MealsDetailScreen.routeName: (ctx) => MealsDetailScreen(),
+        FiltersScreen.routeName: (ctx) => FiltersScreen(),
       },
       onGenerateRoute: (settings) {
         print(settings.arguments);
